@@ -58,12 +58,29 @@ class Test_development_merger_Annex60(unittest.TestCase):
         """Test merging the libraries
         """
         # This requires https://github.com/gitpython-developers/GitPython
-
+        import os
+        import codecs
         import shutil
 
         import buildingspy.development.merger as m
         
+        def _write_utf8_file(directory, content):
+            print "*** Writing UTF8 file: {}".format(os.path.join(directory, "test.mo"))
+            f=codecs.open(os.path.join(directory, "test.mo"), 'w', encoding='utf8')
+            f.write(content)
+            f.close()
+
+
         mer = m.Annex60(self._annex60_dir, self._dest_dir)
+        # In self._annex60_dir, introduce a line in a file that has UTF-8 encodings.
+        # This will test https://github.com/lbl-srg/BuildingsPy/issues/81
+
+        # Write a file with UTF-8
+        s = u'This is \xe4 test\nHere is \xe4nother line.'
+        print s
+        _write_utf8_file(self._annex60_dir, s)
+        _write_utf8_file(self._dest_dir, s)
+
         mer.merge()
 
         if "tmp-BuildingsPy" in self._repDir:
