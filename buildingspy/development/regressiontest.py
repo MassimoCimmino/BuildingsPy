@@ -2102,6 +2102,7 @@ getErrorString();
             # Directory that contains the library as a sub directory
             libDir = self._libHome
 
+            print("Copying from {} to {}".format(libDir, os.path.join(dirNam, self.getLibraryName())
             shutil.copytree(libDir,
                             os.path.join(dirNam, self.getLibraryName()),
                             symlinks=True,
