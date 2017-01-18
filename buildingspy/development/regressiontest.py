@@ -2057,7 +2057,7 @@ getErrorString();
                     self._removePlotCommands(absMosFilNam)
                     nUniTes = nUniTes + 1
                     iItem = iItem + 1
-            runFil.write("Modelica.Utilities.System.exit();\n")
+#            runFil.write("Modelica.Utilities.System.exit();\n")
             runFil.close()
 
         # For files that do not require a simulation, we need to set the path of the result files.
