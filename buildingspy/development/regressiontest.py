@@ -2199,7 +2199,7 @@ getErrorString();
         if not self._useExistingResults:
             libNam = self.getLibraryName()
             if self._modelicaCmd == 'dymola':
-                if self._showGUI:
+                if self._showGUI or True:
                     cmd = [self.getModelicaCommand(), "runAll.mos"]
                 else:
                     cmd = [self.getModelicaCommand(), "runAll.mos", "/nowindow"]
