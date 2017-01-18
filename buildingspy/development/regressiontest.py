@@ -39,7 +39,7 @@ def runSimulation(worDir, cmd):
     pac_fil = os.path.join(worDir, "packageAAA.mo")
 
     if not os.path.isfile(pac_fil):
-        msg = "Error: Expected file {}".format(pac_file)
+        msg = "Error: Expected file {}".format(pac_fil)
         raise ValueError(msg)
 
     logFilNam=os.path.join(worDir, 'stdout.log')
