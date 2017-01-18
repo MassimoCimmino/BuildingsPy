@@ -36,11 +36,11 @@ def runSimulation(worDir, cmd):
     import os.path
     import subprocess
 
-    pac_fil = os.path.join(worDir, "package.mo")
 
-    if not os.path.isfile(pac_fil):
-        msg = "Error: Expected file {}".format(pac_fil)
-        raise ValueError(msg)
+    for fil in [os.path.join(worDir, "runAll.mos"), os.path.join(worDir, "package.mo")]:
+        if not os.path.isfile(fil):
+            msg = "Error: Expected file {}".format(fil)
+            raise ValueError(msg)
 
     logFilNam=os.path.join(worDir, 'stdout.log')
     logFil = open(logFilNam, 'w')
