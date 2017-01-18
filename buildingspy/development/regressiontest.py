@@ -47,7 +47,7 @@ def runSimulation(worDir, cmd):
     logFilNam=os.path.join(worDir, 'stdout.log')
     logFil = open(logFilNam, 'w')
     print("Starting {}".format(cmd))
-    pro = subprocess.Popen(args=cmd,
+    pro = subprocess.Popen(args=['dymola', cwd],
                            stdout=logFil,
                            stderr=logFil,
                            shell=False,
