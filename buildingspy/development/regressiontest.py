@@ -36,7 +36,7 @@ def runSimulation(worDir, cmd):
     import os.path
     import subprocess
 
-    pac_fil = os.path.join(worDir, "packageAAA.mo")
+    pac_fil = os.path.join(worDir, "package.mo")
 
     if not os.path.isfile(pac_fil):
         msg = "Error: Expected file {}".format(pac_fil)
