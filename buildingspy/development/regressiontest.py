@@ -38,7 +38,9 @@ def runSimulation(worDir, cmd):
 
 
     for fil in [os.path.join(worDir, "runAll.mos"), os.path.join(worDir, "package.mo")]:
-        if not os.path.isfile(fil):
+        if os.path.isfile(fil):
+            print("File {} exists.".format(fil))
+        else:
             msg = "Error: Expected file {}".format(fil)
             raise ValueError(msg)
 
