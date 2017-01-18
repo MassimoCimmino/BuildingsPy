@@ -33,8 +33,14 @@ def runSimulation(worDir, cmd):
     .. note:: This method is outside the class definition to
               allow parallel computing.
     '''
-
+    import os.path
     import subprocess
+
+    pac_fil = os.path.join(worDir, "package.mo")
+
+    if not os.path.isfile(pac_fil):
+        msg = "Error: Expected file {}".format(pac_file)
+        raise ValueError(msg)
 
     logFilNam=os.path.join(worDir, 'stdout.log')
     logFil = open(logFilNam, 'w')
