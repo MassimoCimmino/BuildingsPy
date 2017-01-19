@@ -2107,6 +2107,10 @@ getErrorString();
             shutil.copytree(libDir,
                             target,
                             symlinks=False)
+            onlyfiles = [f for f in os.path.listdir(mypath) if os.path.isfile(os.path.join(mypath, f))]
+            for f in onlyfiles:
+                print("Found file: {}".format(f))
+                
             print("Source has {} files.".format(len([name for name in os.listdir(libDir) if os.path.isfile(os.path.join(libDir, name))])))
             print("Copied {} files.".format(len([name for name in os.listdir(target) if os.path.isfile(os.path.join(target, name))])))
         return
