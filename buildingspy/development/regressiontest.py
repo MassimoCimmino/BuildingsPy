@@ -2090,7 +2090,7 @@ getErrorString();
     def _setTemporaryDirectories(self):
         import tempfile
         import shutil
-
+        
         self._temDir = []
 
         # Make temporary directory, copy library into the directory and
@@ -2107,7 +2107,7 @@ getErrorString();
             shutil.copytree(libDir,
                             target,
                             symlinks=False)
-            onlyfiles = [f for f in os.path.listdir(mypath) if os.path.isfile(os.path.join(mypath, f))]
+            onlyfiles = [f for f in os.listdir(mypath) if os.path.isfile(os.path.join(mypath, f))]
             for f in onlyfiles:
                 print("Found file: {}".format(f))
                 
