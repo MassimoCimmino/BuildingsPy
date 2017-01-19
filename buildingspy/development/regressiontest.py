@@ -2106,7 +2106,7 @@ getErrorString();
             target = os.path.join(dirNam, self.getLibraryName())
             shutil.copytree(libDir,
                             target,
-                            symlinks=True,
+                            symlinks=False,
                             ignore=shutil.ignore_patterns('.svn', '.mat', 'request.', 'status.'))
             print("Source has {} files.".format(len([name for name in os.listdir(libDir) if os.path.isfile(os.path.join(libDir, name))])))
             print("Copied {} files.".format(len([name for name in os.listdir(target) if os.path.isfile(os.path.join(target, name))])))
