@@ -2107,7 +2107,8 @@ getErrorString();
             shutil.copytree(libDir,
                             target,
                             symlinks=False)
-            onlyfiles = [f for f in os.listdir(mypath) if os.path.isfile(os.path.join(mypath, f))]
+            onlyfiles = [f for f in os.listdir(libDir) if os.path.isfile(os.path.join(libDir, f))]
+
             for f in onlyfiles:
                 print("Found file: {}".format(f))
                 
