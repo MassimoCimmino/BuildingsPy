@@ -254,6 +254,9 @@ class Tester(object):
         # By default, do not show the GUI of the simulator
         self._showGUI = False
 
+        # List of pre-processing statements to write to the simulation script
+        self._preProcessing_ = list()
+
     def get_unit_test_log_file(self):
         """ Return the name of the log file of the unit tests, such as ``unitTests-jmodelica.log`` or ``unitTests-dymola.log``.
         """
@@ -398,6 +401,22 @@ class Tester(object):
             return 'jm_ipython.sh'
         else:
             return self._modelica_tool
+
+    def addPreProcessingStatement(self, command):
+        """Adds a pre-processing statement to the simulation script.
+
+        :param command: A script statement.
+
+        Usage: Type
+           >>> import buildingspy.development.regressiontest as r
+           >>> r = r.Tester()
+           >>> r.addPreProcessingStatement("Advanced.PedanticModelica = true;")
+           >>> r.run()
+
+        This will execute the statement after the ``openModel`` statement.
+        """
+        self._preProcessing_.append(command)
+        return
 
     def isExecutable(self, program):
         """ Return ``True`` if the ``program`` is an executable
@@ -2322,6 +2341,9 @@ len(yNew)    = %d.""" % (filNam, varNam, len(tGriOld), len(tGriNew), len(yNew))
                     else:
                         runFil.write('Advanced.PedanticModelica = false;\n')
                     runFil.write('openModel("package.mo");\n')
+                    # Pre-processing commands
+                    for prePro in self._preProcessing_:
+                        runFil.write(prePro + '\n')
                 elif self._modelica_tool == 'omc':
                     runFil.write('loadModel(Modelica, {"3.2"});\n')
                     runFil.write('getErrorString();\n')
